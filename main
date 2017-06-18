@@ -58,3 +58,25 @@ function touch() {
   }
 }
 
+function tap() {
+  me.show(x,y)
+}
+
+function loop() { 
+  bomb.move(LEFT, 35)
+  bomb.rotate(random(RIGHT, LEFT) 15)
+  bomb.wrap()
+  if (choice=='boy') {
+    send(chaser,bomb.x,bomb.y)
+    if(me.hits(bomb)==true) {
+      me.explode()
+      if (exploding==false) {
+        DadScore = DadScore + 1
+        Dadscoreboard.change(DadScore)
+        exploding= true
+        send('DadScore', Dadscore)
+      }
+    }
+  }
+}
+    
