@@ -1,4 +1,3 @@
-//use this file to make a team project
 avatars = {}
 DadScore = 0 
 DaughterScore = 0
@@ -12,31 +11,31 @@ exploding = false
 DaughterExploding = false
 
 function get(name,x,y) {
-  if(avatars[name]) {
+  if (avatars[name]) {
     avatars[name].move(x,y)
     if (name=='bomb') {
       if (me.hits(avatars[name])==true) {
-        me.explode()
+    	me.explode()
         if (DaughterExploding==false) {
-          Daughterscore = DaughterScore + 1
-          DaughterScorebord.change(DaughterScore)
+          DaughterScore = DaughterScore + 1
+          DaughterScoreboard.change(DaughterScore)
           send('DaughterScore', DaughterScore)
           DaughterExploding=true
         }
       }
-    }
+  	}
     if (name=='DadScore') {
       DadScoreboard.change(x)
     }
     if (name=='DaughterScore') {
       DaughterScoreboard.change(x)
     }
-  } else {
-    avatars[name] = stamp(name,x,y)
+  } else {
+    avatars[name] = stamp(name,x,y) 
+  	}
   }
-}
-  
-pick = prompt('Enter 1 for Dad, 2 for daughter')
+
+pick = prompt('Enter 1 for Dad, 2 for Daughter')
 if (pick==1) {
   choice = 'boy'
   chaser = 'bomb'
@@ -47,8 +46,8 @@ me = stamp(choice)
 bomb = stamp(chaser,200,200,100)
 
 function drag() {
-  me.move(x,y)
-  send(choice,x,y)
+  me.move(x,y)
+  send(choice,x,y)
 }
 function touch() {
   if (choice=='boy') {
@@ -62,21 +61,20 @@ function tap() {
   me.show(x,y)
 }
 
-function loop() { 
+function loop() {
   bomb.move(LEFT, 35)
-  bomb.rotate(random(RIGHT, LEFT) 15)
+  bomb.rotate(random(RIGHT,LEFT), 15)
   bomb.wrap()
   if (choice=='boy') {
     send(chaser,bomb.x,bomb.y)
-    if(me.hits(bomb)==true) {
-      me.explode()
-      if (exploding==false) {
-        DadScore = DadScore + 1
-        Dadscoreboard.change(DadScore)
-        exploding= true
-        send('DadScore', Dadscore)
-      }
+	  if (me.hits(bomb)==true) {
+    	me.explode()
+        if (exploding==false) {
+          DadScore = DadScore + 1 
+          DadScoreboard.change(DadScore)
+          exploding = true
+          send('DadScore', DadScore)
+       }      
     }
-  }
+  } 
 }
-    
