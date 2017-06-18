@@ -36,3 +36,25 @@ function get(name,x,y) {
   }
 }
   
+pick = prompt('Enter 1 for Dad, 2 for daughter')
+if (pick==1) {
+  choice = 'boy'
+  chaser = 'bomb'
+} else {
+  choice = 'girl'
+}
+me = stamp(choice)
+bomb = stamp(chaser,200,200,100)
+
+function drag() {
+  me.move(x,y)
+  send(choice,x,y)
+}
+function touch() {
+  if (choice=='boy') {
+  exploding = false
+  } else {
+  DaughterExploding = false
+  }
+}
+
