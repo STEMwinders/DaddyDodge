@@ -62,7 +62,7 @@ function tap() {
 }
 
 function loop() {
-  bomb.move(LEFT, 35)
+  bomb.move(LEFT, 25)
   bomb.rotate(random(RIGHT,LEFT), 15)
   bomb.wrap()
   if (choice=='boy') {
