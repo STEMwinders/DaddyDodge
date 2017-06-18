@@ -1,1 +1,13 @@
 //use this file to make a team project
+avatars = {}
+DadScore = 0 
+DaughterScore = 0
+text ('Dad', 75, 100, 50, 'black')
+DadScoreboard = text(DadScore,100,200,100,'black')
+text ('Daughter', 225, 100, 50, 'black')
+DaughterScore = 0
+DaughterScoreboard = text(DaughterScore,250,200,100,'black')
+
+exploding = false
+DaughterExploding = false
+
