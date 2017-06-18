@@ -11,3 +11,28 @@ DaughterScoreboard = text(DaughterScore,250,200,100,'black')
 exploding = false
 DaughterExploding = false
 
+function get(name,x,y) {
+  if(avatars[name]) {
+    avatars[name].move(x,y)
+    if (name=='bomb') {
+      if (me.hits(avatars[name])==true) {
+        me.explode()
+        if (DaughterExploding==false) {
+          Daughterscore = DaughterScore + 1
+          DaughterScorebord.change(DaughterScore)
+          send('DaughterScore', DaughterScore)
+          DaughterExploding=true
+        }
+      }
+    }
+    if (name=='DadScore') {
+      DadScoreboard.change(x)
+    }
+    if (name=='DaughterScore') {
+      DaughterScoreboard.change(x)
+    }
+  } else {
+    avatars[name] = stamp(name,x,y)
+  }
+}
+  
